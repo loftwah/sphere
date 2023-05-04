@@ -4,9 +4,7 @@ Sphere Vault leverages the OP Stack (OpenAI + Pinecone Vector Database) to allow
 
 [sphere.bookloop.club](https://sphere.bookloop.club)
 
-With a quick setup, you can launch your own version of this Golang server, accompanied by a user-friendly React frontend that enables users to ask OpenAI questions about the specific knowledge base provided. The main focus is on human-readable content like books, letters, and other documents, making it a practical and valuable tool for knowledge extraction and question-answering. You can upload an entire library's worth of books and documents and receive pointed answers along with the name of the file and the specific section within the file that the answer is based on!
-
-## What can you do with Sphere Vault?
+## Features
 
 With Sphere Vault, you can:
 
@@ -24,8 +22,27 @@ With Sphere Vault, you can:
 
 ## Setup
 
-Please follow the setup instructions in the original repository, including installing manual dependencies, setting up API keys and endpoints in the `secret` folder, and running the development environment. Instructions for uploading files, asking questions, and information about the underlying technology can also be found in the original repository.
+1. Install manual dependencies:
+
+   * Install Go: Follow the Go docs [here](https://go.dev/doc/install)
+   * Install node v19: Use [nvm to install node v19](https://medium.com/@iam_vinojan/how-to-install-node-js-and-npm-using-node-version-manager-nvm-143165b16ce1)
+   * Install poppler: `sudo apt-get install -y poppler-utils` on Ubuntu, or `brew install poppler` on Mac
+
+2. Set up your API keys and endpoints in the `secret` folder:
+
+   * Create a new file `secret/openai_api_key` and paste your [OpenAI API key](https://platform.openai.com/docs/api-reference/authentication) into it: `echo "your_openai_api_key_here" > secret/openai_api_key`
+   * Create a new file `secret/pinecone_api_key` and paste your [Pinecone API key](https://docs.pinecone.io/docs/quickstart#2-get-and-verify-your-pinecone-api-key) into it: `echo "your_pinecone_api_key_here" > secret/pinecone_api_key`
+   * Create a new file `secret/pinecone_api_endpoint` and paste your [Pinecone API endpoint](https://app.pinecone.io/organizations/) into it: `echo "https://<your-url>.pinecone.io" > secret/pinecone_api_endpoint`
+
+3. Running the development environment:
+
+   * Install JavaScript package dependencies: `npm install`
+   * Run the Golang web server (default port `:8100`): `npm start`
+   * In another terminal window, run Webpack to compile the JS code and create a bundle.js file: `npm run dev`
+   * Visit the local version of the site at <http://localhost:8100>
+
+For more detailed information about uploading files, asking questions, and the underlying technology, please refer to the original repository.
 
 ## Licensing
 
-This project is now licensed under the BSD 3-Clause License. Please find the full license text in the `LICENSE` file of the project repository.
+This project is licensed under the BSD 3-Clause License. Please find the full license text in the `LICENSE` file of the project repository.
